@@ -1,0 +1,1317 @@
+/* ==========================================
+   DARLING DRIVE — GAMING CONTROLLER UI
+   Compatible with the current index.html
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #090910;
+    --panel: #12121d;
+    --panel-2: #191927;
+    --pink: #ff2e93;
+    --pink-light: #ff70b7;
+    --purple: #a855f7;
+    --cyan: #45e7ff;
+    --green: #40f5a1;
+    --red: #ff3d5a;
+    --white: #f8f7ff;
+    --muted: #9493aa;
+    --border: rgba(255, 255, 255, 0.09);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    min-height: 100%;
+    background: var(--bg);
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    background:
+        radial-gradient(ellipse at 10% 0%, rgba(168, 85, 247, 0.12), transparent 35%),
+        radial-gradient(ellipse at 100% 100%, rgba(255, 46, 147, 0.10), transparent 35%),
+        var(--bg);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    color: inherit;
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+    filter: grayscale(0.6);
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* APP */
+
+.app,
+#darlingApp {
+    width: 100%;
+    max-width: 1450px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* HEADER */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 14px 20px;
+    margin-bottom: 18px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: rgba(18, 18, 29, 0.94);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    display: grid;
+    place-items: center;
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 112, 183, 0.4);
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    box-shadow: 0 0 22px rgba(255, 46, 147, 0.2);
+    font-size: 23px;
+}
+
+.brand h1 {
+    color: var(--white);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.brand p {
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 13px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #77778c;
+}
+
+.status-dot.connected {
+    background: var(--green);
+    box-shadow: 0 0 12px rgba(64, 245, 161, 0.65);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: 0.45;
+    }
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    align-items: center;
+    gap: 20px;
+    min-height: 245px;
+    padding: 30px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 46, 147, 0.2);
+    border-radius: 24px;
+    background:
+        radial-gradient(ellipse at 80% 50%, rgba(255, 46, 147, 0.12), transparent 50%),
+        linear-gradient(120deg, #171525, #11111c);
+}
+
+.hero::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 28px 28px;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h2 {
+    margin-bottom: 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(23px, 3vw, 38px);
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.hero h2 span {
+    color: var(--pink-light);
+    text-shadow: 0 0 20px rgba(255, 46, 147, 0.35);
+}
+
+.hero p {
+    max-width: 430px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+#carStatus,
+.car-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 8px 12px;
+    border: 1px solid rgba(69, 231, 255, 0.2);
+    border-radius: 30px;
+    background: rgba(69, 231, 255, 0.05);
+    color: var(--cyan);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* HERO CAR */
+
+.car-visual {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 185px;
+}
+
+.car-glow {
+    position: absolute;
+    bottom: 20px;
+    width: 70%;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--pink);
+    opacity: 0.35;
+    filter: blur(22px);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    to {
+        opacity: 0.6;
+        transform: scaleX(1.1);
+    }
+}
+
+.car-body {
+    position: relative;
+    width: min(280px, 90%);
+    height: 75px;
+    border: 2px solid #ff8bc8;
+    border-radius: 35px 48px 25px 25px;
+    background: linear-gradient(145deg, #ff73ba, #e51a7d 65%, #75124f);
+    box-shadow:
+        inset 0 5px 12px rgba(255, 255, 255, 0.2),
+        0 0 25px rgba(255, 46, 147, 0.2);
+}
+
+.car-roof {
+    position: absolute;
+    top: -35px;
+    left: 24%;
+    width: 52%;
+    height: 48px;
+    border: 2px solid #ff9bd2;
+    border-radius: 30px 30px 5px 5px;
+    background: linear-gradient(135deg, #8d50d8, #252347);
+}
+
+.car-window {
+    position: absolute;
+    inset: 7px 9px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 22px 22px 4px 4px;
+    background: linear-gradient(135deg, #284a67, #0a1322);
+}
+
+.car-stripe {
+    position: absolute;
+    top: 34px;
+    left: 12%;
+    width: 76%;
+    height: 4px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.car-front {
+    position: absolute;
+    top: 20px;
+    right: -2px;
+    width: 10px;
+    height: 28px;
+    border-radius: 5px 10px 10px 5px;
+    background: #fff0bd;
+    box-shadow: 0 0 12px #ffdf9b;
+}
+
+.wheel-one,
+.wheel-two {
+    position: absolute;
+    bottom: -13px;
+    width: 38px;
+    height: 26px;
+    border: 4px solid #515168;
+    border-radius: 8px;
+    background: #08080e;
+}
+
+.wheel-one {
+    left: 32px;
+}
+
+.wheel-two {
+    right: 32px;
+}
+
+/* GENERAL PANELS */
+
+.panel {
+    min-width: 0;
+    padding: 22px;
+    margin-bottom: 18px;
+    border: 1px solid var(--border);
+    border-radius: 21px;
+    background: linear-gradient(145deg, #171725, #10101a);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.panel h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.panel-subtitle {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* PAIRING */
+
+.pairing-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.pairing-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    border-radius: 13px;
+    background: rgba(168, 85, 247, 0.1);
+    font-size: 20px;
+}
+
+#pairForm {
+    display: flex;
+    gap: 12px;
+}
+
+#pairCode {
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    outline: none;
+    background: #0b0b14;
+    color: var(--white);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+#pairCode::placeholder {
+    color: #77758d;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+#pairCode:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 0 3px rgba(255, 46, 147, 0.1);
+}
+
+#pairButton {
+    flex-shrink: 0;
+    min-height: 48px;
+    padding: 12px 22px;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--pink), #a13cff);
+    box-shadow: 0 5px 18px rgba(255, 46, 147, 0.2);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    transition: transform 0.2s, filter 0.2s;
+}
+
+#pairButton:hover {
+    filter: brightness(1.12);
+    transform: translateY(-2px);
+}
+
+#pairBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    padding: 7px 11px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+#pairMessage {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+#pairMessage.success {
+    color: var(--green);
+}
+
+#pairMessage.error {
+    color: var(--red);
+}
+
+/* CONTROLLER */
+
+.controller-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.live-tag {
+    padding: 6px 10px;
+    border: 1px solid rgba(64, 245, 161, 0.2);
+    border-radius: 8px;
+    background: rgba(64, 245, 161, 0.05);
+    color: var(--green);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.drive-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(120px, 0.7fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 25px;
+}
+
+.steering-section,
+.pedal-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.control-label {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* STEERING */
+
+.steering-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(60px, 90px));
+    gap: 12px;
+}
+
+.steering-button,
+.drive-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+    min-height: 78px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 17px;
+    background: linear-gradient(145deg, #252538, #151521);
+    box-shadow:
+        inset 0 1px rgba(255, 255, 255, 0.04),
+        0 7px 15px rgba(0, 0, 0, 0.2);
+    font-size: 26px;
+    transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.steering-button span,
+.drive-button span {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.steering-button:hover,
+.drive-button:hover {
+    border-color: rgba(255, 46, 147, 0.55);
+    background: #302039;
+}
+
+.steering-button:active,
+.drive-button:active,
+.steering-button.active,
+.drive-button.active {
+    transform: scale(0.94);
+    border-color: var(--pink);
+    background: linear-gradient(145deg, #6d1b54, #321740);
+    box-shadow: 0 0 20px rgba(255, 46, 147, 0.16);
+}
+
+/* CENTER DASHBOARD */
+
+.vehicle-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    min-width: 0;
+    padding: 18px 8px;
+    border: 1px solid rgba(69, 231, 255, 0.13);
+    border-radius: 20px;
+    background: radial-gradient(ellipse at center, rgba(69, 231, 255, 0.07), transparent 75%);
+}
+
+.dashboard-car {
+    position: relative;
+    width: 75px;
+    height: 105px;
+    border: 2px solid rgba(69, 231, 255, 0.6);
+    border-radius: 25px 25px 18px 18px;
+    background: linear-gradient(145deg, #243b57, #101322);
+    box-shadow: 0 0 22px rgba(69, 231, 255, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.dashboard-car::before {
+    position: absolute;
+    top: 11px;
+    left: 10px;
+    right: 10px;
+    height: 26px;
+    border: 1px solid rgba(69, 231, 255, 0.45);
+    border-radius: 12px 12px 5px 5px;
+    background: linear-gradient(135deg, #245477, #111b35);
+    content: "";
+}
+
+.dashboard-car::after {
+    position: absolute;
+    bottom: 11px;
+    left: 13px;
+    right: 13px;
+    height: 22px;
+    border-radius: 5px 5px 10px 10px;
+    background: #222039;
+    content: "";
+}
+
+.dashboard-car.turn-left {
+    transform: rotate(-10deg);
+}
+
+.dashboard-car.turn-right {
+    transform: rotate(10deg);
+}
+
+.speed-display {
+    text-align: center;
+}
+
+#speedValue {
+    color: var(--cyan);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    text-shadow: 0 0 15px rgba(69, 231, 255, 0.2);
+}
+
+.speed-unit {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+#directionDisplay {
+    padding: 7px 11px;
+    border: 1px solid rgba(69, 231, 255, 0.18);
+    border-radius: 20px;
+    background: rgba(69, 231, 255, 0.05);
+    color: var(--cyan);
+    font-size: 9px;
+    font-weight: 800;
+    text-align: center;
+}
+
+/* FORWARD AND REVERSE */
+
+.pedal-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: min(100%, 125px);
+    min-height: 110px;
+    padding: 12px;
+    border: 1px solid rgba(64, 245, 161, 0.25);
+    border-radius: 18px;
+    background: linear-gradient(145deg, #17372f, #10221f);
+    color: var(--green);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.pedal-button .pedal-icon {
+    font-size: 29px;
+}
+
+.pedal-button span:last-child {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.pedal-button.accelerate:active,
+.pedal-button.accelerate.active {
+    transform: scale(0.95);
+    box-shadow: 0 0 22px rgba(64, 245, 161, 0.15);
+}
+
+.pedal-button.reverse {
+    border-color: rgba(255, 184, 83, 0.25);
+    background: linear-gradient(145deg, #3b2b1b, #241a13);
+    color: #ffbd68;
+}
+
+.pedal-button.reverse:active,
+.pedal-button.reverse.active {
+    transform: scale(0.95);
+    box-shadow: 0 0 22px rgba(255, 184, 83, 0.12);
+}
+
+/* CONTROL STATUS */
+
+#controlStatus,
+#steeringStatus {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* TELEMETRY */
+
+.telemetry {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.telemetry-card {
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.telemetry-label {
+    margin-bottom: 7px;
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.telemetry-value {
+    overflow-wrap: anywhere;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* EMERGENCY STOP */
+
+.emergency {
+    margin-top: 18px;
+    padding: 15px;
+    border: 1px solid rgba(255, 61, 90, 0.2);
+    border-radius: 18px;
+    background: rgba(255, 61, 90, 0.035);
+}
+
+#emergencyStop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 58px;
+    padding: 14px;
+    border: 1px solid rgba(255, 61, 90, 0.45);
+    border-radius: 13px;
+    background: linear-gradient(135deg, #ff405e, #bd173b);
+    box-shadow: 0 5px 18px rgba(255, 61, 90, 0.12);
+    color: white;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    transition: filter 0.15s, transform 0.15s;
+}
+
+#emergencyStop:hover {
+    filter: brightness(1.1);
+}
+
+#emergencyStop:active {
+    transform: scale(0.985);
+}
+
+#controlNotice {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* FOOTER */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 5px 8px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.footer strong {
+    color: var(--pink-light);
+    letter-spacing: 1px;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 850px) {
+    .app,
+    #darlingApp {
+        padding: 13px;
+    }
+
+    .hero {
+        padding: 23px;
+        gap: 10px;
+    }
+
+    .drive-layout {
+        gap: 12px;
+    }
+
+    .steering-buttons {
+        grid-template-columns: repeat(2, minmax(50px, 75px));
+        gap: 8px;
+    }
+
+    .steering-button {
+        min-height: 65px;
+    }
+
+    .panel {
+        padding: 17px;
+    }
+}
+
+/* ==========================================
+   MOBILE PORTRAIT
+========================================== */
+
+@media (max-width: 560px) {
+    .app,
+    #darlingApp {
+        padding: 9px;
+    }
+
+    .topbar {
+        gap: 8px;
+        padding: 11px;
+        margin-bottom: 12px;
+        border-radius: 15px;
+    }
+
+    .brand {
+        gap: 8px;
+    }
+
+    .brand-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        font-size: 19px;
+    }
+
+    .brand h1 {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .brand p {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .connection-status {
+        gap: 6px;
+        padding: 8px;
+        font-size: 9px;
+    }
+
+    .status-dot {
+        width: 7px;
+        height: 7px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        min-height: auto;
+        padding: 19px;
+        margin-bottom: 12px;
+        border-radius: 18px;
+    }
+
+    .hero h2 {
+        font-size: 24px;
+    }
+
+    .hero p {
+        font-size: 11px;
+    }
+
+    .car-status,
+    #carStatus {
+        margin-top: 12px;
+        font-size: 9px;
+    }
+
+    .car-visual {
+        min-height: 145px;
+        margin-top: 20px;
+    }
+
+    .car-body {
+        width: 230px;
+        height: 65px;
+    }
+
+    .car-roof {
+        top: -30px;
+        height: 42px;
+    }
+
+    .car-stripe {
+        top: 29px;
+    }
+
+    .panel {
+        padding: 14px;
+        margin-bottom: 12px;
+        border-radius: 16px;
+    }
+
+    .panel h3 {
+        font-size: 12px;
+    }
+
+    .pairing-header {
+        margin-bottom: 13px;
+    }
+
+    #pairForm {
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    #pairCode {
+        min-height: 46px;
+        font-size: 12px;
+    }
+
+    #pairButton {
+        width: 100%;
+        min-height: 45px;
+    }
+
+    .controller-heading {
+        margin-bottom: 16px;
+    }
+
+    .drive-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(70px, 0.7fr) minmax(0, 1fr);
+        gap: 7px;
+    }
+
+    .steering-section,
+    .pedal-section {
+        gap: 10px;
+    }
+
+    .control-label {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .steering-buttons {
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .steering-button {
+        min-width: 0;
+        min-height: 52px;
+        padding: 5px 2px;
+        border-radius: 11px;
+        font-size: 20px;
+    }
+
+    .steering-button span,
+    .drive-button span {
+        font-size: 7px;
+        letter-spacing: 0;
+    }
+
+    .vehicle-dashboard {
+        gap: 10px;
+        padding: 10px 3px;
+        border-radius: 13px;
+    }
+
+    .dashboard-car {
+        width: 47px;
+        height: 70px;
+        border-radius: 16px;
+    }
+
+    .dashboard-car::before {
+        top: 7px;
+        left: 7px;
+        right: 7px;
+        height: 18px;
+    }
+
+    .dashboard-car::after {
+        bottom: 7px;
+        left: 8px;
+        right: 8px;
+        height: 14px;
+    }
+
+    #speedValue {
+        font-size: 24px;
+    }
+
+    .speed-unit {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    #directionDisplay {
+        padding: 6px 5px;
+        font-size: 7px;
+    }
+
+    .pedal-button {
+        width: 100%;
+        min-height: 77px;
+        padding: 7px 3px;
+        gap: 5px;
+        border-radius: 11px;
+    }
+
+    .pedal-button .pedal-icon {
+        font-size: 22px;
+    }
+
+    .pedal-button span:last-child {
+        font-size: 8px;
+        letter-spacing: 0;
+    }
+
+    .telemetry {
+        gap: 6px;
+        margin-top: 12px;
+    }
+
+    .telemetry-card {
+        padding: 9px 7px;
+        border-radius: 10px;
+    }
+
+    .telemetry-label {
+        font-size: 8px;
+    }
+
+    .telemetry-value {
+        font-size: 10px;
+    }
+
+    .emergency {
+        margin-top: 12px;
+        padding: 10px;
+    }
+
+    #emergencyStop {
+        min-height: 51px;
+        padding: 10px;
+        font-size: 11px;
+    }
+
+    #controlNotice {
+        font-size: 9px;
+    }
+
+    .footer {
+        flex-direction: column;
+        padding: 14px 4px;
+        text-align: center;
+    }
+}
+
+/* ==========================================
+   LANDSCAPE GAME CONTROLLER
+========================================== */
+
+@media (orientation: landscape) and (max-height: 550px) {
+    .app,
+    #darlingApp {
+        max-width: 1500px;
+        padding: 7px 13px;
+    }
+
+    .topbar {
+        padding: 7px 12px;
+        margin-bottom: 9px;
+        border-radius: 12px;
+    }
+
+    .brand-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 17px;
+    }
+
+    .brand h1 {
+        font-size: 15px;
+    }
+
+    .brand p {
+        font-size: 7px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr 0.8fr;
+        min-height: 135px;
+        padding: 12px 18px;
+        margin-bottom: 9px;
+        border-radius: 15px;
+    }
+
+    .hero h2 {
+        font-size: 21px;
+    }
+
+    .hero p {
+        font-size: 10px;
+        line-height: 1.6;
+    }
+
+    .car-status,
+    #carStatus {
+        margin-top: 8px;
+        padding: 5px 9px;
+        font-size: 8px;
+    }
+
+    .car-visual {
+        min-height: 105px;
+    }
+
+    .car-body {
+        width: 190px;
+        height: 53px;
+    }
+
+    .car-roof {
+        top: -25px;
+        height: 33px;
+    }
+
+    .car-stripe {
+        top: 24px;
+    }
+
+    .wheel-one,
+    .wheel-two {
+        bottom: -10px;
+        width: 30px;
+        height: 20px;
+    }
+
+    .wheel-one {
+        left: 25px;
+    }
+
+    .wheel-two {
+        right: 25px;
+    }
+
+    .panel {
+        padding: 11px 14px;
+        margin-bottom: 9px;
+        border-radius: 13px;
+    }
+
+    .pairing-header {
+        margin-bottom: 9px;
+    }
+
+    .pairing-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    #pairForm {
+        flex-direction: row;
+    }
+
+    #pairCode,
+    #pairButton {
+        min-height: 38px;
+        padding: 8px 12px;
+    }
+
+    #pairButton {
+        width: auto;
+    }
+
+    #pairMessage {
+        margin-top: 5px;
+        font-size: 9px;
+    }
+
+    .controller-heading {
+        margin-bottom: 10px;
+    }
+
+    .panel h3 {
+        font-size: 11px;
+    }
+
+    .drive-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(85px, 0.65fr) minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .steering-section,
+    .pedal-section {
+        gap: 7px;
+    }
+
+    .steering-buttons {
+        grid-template-columns: repeat(2, minmax(55px, 80px));
+        gap: 7px;
+    }
+
+    .steering-button {
+        min-height: 48px;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+
+    .vehicle-dashboard {
+        gap: 7px;
+        padding: 7px;
+    }
+
+    .dashboard-car {
+        width: 38px;
+        height: 54px;
+        border-radius: 13px;
+    }
+
+    .dashboard-car::before {
+        top: 6px;
+        left: 5px;
+        right: 5px;
+        height: 14px;
+    }
+
+    .dashboard-car::after {
+        bottom: 6px;
+        left: 6px;
+        right: 6px;
+        height: 11px;
+    }
+
+    #speedValue {
+        font-size: 21px;
+    }
+
+    .pedal-button {
+        width: min(100%, 100px);
+        min-height: 68px;
+        padding: 6px;
+        gap: 3px;
+    }
+
+    .pedal-button .pedal-icon {
+        font-size: 20px;
+    }
+
+    .telemetry {
+        margin-top: 9px;
+    }
+
+    .telemetry-card {
+        padding: 8px;
+    }
+
+    .emergency {
+        margin-top: 9px;
+        padding: 8px;
+    }
+
+    #emergencyStop {
+        min-height: 40px;
+        padding: 7px;
+        font-size: 10px;
+    }
+
+    #controlNotice {
+        margin-top: 6px;
+        font-size: 9px;
+    }
+
+    .footer {
+        padding: 9px 4px 3px;
+        font-size: 9px;
+    }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

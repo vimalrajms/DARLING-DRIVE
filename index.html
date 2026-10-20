@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#09090f">
+    <title>DARLING DRIVE | RC Controller</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="app" id="darlingApp">
+
+        <!-- TOP HEADER -->
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-icon">♥</div>
+
+                <div class="brand-info">
+                    <h1>DARLING <span>DRIVE</span></h1>
+                    <p>SMART RC CONTROL SYSTEM</p>
+                </div>
+            </div>
+
+            <div class="connection-status">
+                <span class="status-dot" id="connectionDot"></span>
+                <span id="connectionText">NOT CONNECTED</span>
+            </div>
+        </header>
+
+        <!-- VEHICLE DISPLAY -->
+        <section class="hero panel">
+            <div class="hero-copy">
+                <span class="eyebrow">YOUR PERSONAL RC SYSTEM</span>
+
+                <h2>TAKE<br>CONTROL<span>.</span></h2>
+
+                <p>Connect your Darling car and start driving.</p>
+
+                <div class="hero-status">
+                    <span class="status-dot"></span>
+                    <span id="carStatus">CAR OFFLINE</span>
+                </div>
+            </div>
+
+            <div class="car-visual" aria-label="Decorative RC car illustration">
+                <div class="car-roof"></div>
+                <div class="car-window"></div>
+
+                <div class="car-body">
+                    <div class="car-stripe"></div>
+                    <div class="car-front"></div>
+                </div>
+
+                <div class="wheel wheel-one"></div>
+                <div class="wheel wheel-two"></div>
+                <div class="car-glow"></div>
+            </div>
+        </section>
+
+        <!-- PAIRING -->
+        <section class="panel pairing">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">CONNECTION SYSTEM</span>
+                    <h2>Pair Your Car</h2>
+                </div>
+
+                <span class="pair-badge" id="pairBadge">
+                    NOT PAIRED
+                </span>
+            </div>
+
+            <form id="pairForm">
+                <label for="pairCode">ENTER PAIR CODE</label>
+
+                <div class="input-row">
+                    <input
+                        id="pairCode"
+                        name="pairCode"
+                        type="password"
+                        placeholder="Enter your pair code"
+                        autocomplete="off"
+                        maxlength="40"
+                        required
+                    >
+
+                    <button
+                        type="submit"
+                        class="button primary"
+                        id="pairButton"
+                    >
+                        ♥ PAIR NOW
+                    </button>
+                </div>
+            </form>
+
+            <p class="message" id="pairMessage" aria-live="polite">
+                Enter your pair code to begin.
+            </p>
+        </section>
+
+        <!-- LANDSCAPE GAME CONTROLLER -->
+        <section class="panel controls">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">LANDSCAPE MODE</span>
+                    <h2>Drive Control</h2>
+                </div>
+
+                <span class="mode-badge" id="driveMode">
+                    MANUAL MODE
+                </span>
+            </div>
+
+            <div class="drive-layout">
+
+                <!-- LEFT: STEERING -->
+                <div class="steering-section">
+                    <span class="control-label">STEERING</span>
+
+                    <div class="steering-buttons">
+                        <button
+                            type="button"
+                            class="drive-button steering-button"
+                            data-command="left"
+                            aria-label="Steer left"
+                            disabled
+                        >
+                            ◀
+                        </button>
+
+                        <button
+                            type="button"
+                            class="drive-button steering-button"
+                            data-command="right"
+                            aria-label="Steer right"
+                            disabled
+                        >
+                            ▶
+                        </button>
+                    </div>
+
+                    <p class="control-hint">LEFT / RIGHT</p>
+                </div>
+
+                <!-- CENTER: DASHBOARD -->
+                <div class="vehicle-dashboard">
+                    <span class="control-label">VEHICLE DISPLAY</span>
+
+                    <div class="dashboard-car" aria-hidden="true">
+                        🏎️
+                    </div>
+
+                    <div class="speed-display">
+                        <span id="speedValue">000</span>
+                    </div>
+
+                    <span class="speed-unit">
+                        DEMO SPEED
+                    </span>
+
+                    <div class="direction-display" id="directionDisplay">
+                        READY
+                    </div>
+                </div>
+
+                <!-- RIGHT: ACCELERATION -->
+                <div class="pedal-section">
+                    <span class="control-label">THROTTLE</span>
+
+                    <button
+                        type="button"
+                        class="drive-button pedal-button accelerate"
+                        data-command="forward"
+                        disabled
+                    >
+                        <span>▲</span>
+                        <span>FORWARD</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="drive-button pedal-button reverse"
+                        data-command="reverse"
+                        disabled
+                    >
+                        <span>▼</span>
+                        <span>REVERSE</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- STATUS INFORMATION -->
+            <div class="telemetry">
+                <div class="telemetry-item">
+                    <span>CONTROL</span>
+                    <strong id="controlStatus">LOCKED</strong>
+                </div>
+
+                <div class="telemetry-item">
+                    <span>STEERING</span>
+                    <strong id="steeringStatus">CENTER</strong>
+                </div>
+
+                <button
+                    type="button"
+                    class="button emergency"
+                    id="emergencyStop"
+                    disabled
+                >
+                    ■ STOP
+                </button>
+            </div>
+
+            <p class="notice" id="controlNotice">
+                PREVIEW MODE — ESP32 connection is required for real
+                motor control.
+            </p>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <span>♥ DARLING DRIVE</span>
+            <span>MADE FOR VIMAL MS</span>
+        </footer>
+
+    </main>
+</body>
+</html>
